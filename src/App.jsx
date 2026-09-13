@@ -72,6 +72,16 @@ function CountIncreaseComp() {
 function TabEffect() {
 
   const [tab, setTab] = useState(1)
+  const [tabData, setTabData] = useState({})
+  
+
+  useEffect(function() {
+    fetch("https://jsonplaceholder.typicode.com/todos/" + tab)
+    .then(async res => {
+      const json = await res.json();
+      setTabData(json)
+    })
+  })
 
   return <div>
     <button onClick={()=> {
@@ -97,6 +107,12 @@ function TabEffect() {
     }} 
     style={{color: tab == 4 ? "red" : "black"}}>Tab-4
     </button>
+
+    <br />
+
+    {tabData.title}
+
+    
 
   </div>
 }
