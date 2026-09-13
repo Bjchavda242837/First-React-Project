@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 function App() {
   return (
     <div>
-      <CountIncreaseComp />
+      <CountIncreaseComp /> 
 
       <CountTimerComp />
+
+      <TabEffect />
     </div>
   );
 }
@@ -66,5 +68,39 @@ function CountIncreaseComp() {
     </div>
   );
 }
+
+function TabEffect() {
+
+  const [tab, setTab] = useState(1)
+
+  return <div>
+    <button onClick={()=> {
+      setTab(1)
+    }} 
+    style={{color: tab == 1 ? "red" : "black"}}>Tab-1
+    </button>
+
+     <button onClick={()=> {
+      setTab(2)
+    }} 
+    style={{color: tab == 2 ? "red" : "black"}}>Tab-2
+    </button>
+
+     <button onClick={()=> {
+      setTab(3)
+    }} 
+    style={{color: tab == 3 ? "red" : "black"}}>Tab-3
+    </button>
+
+     <button onClick={()=> {
+      setTab(4)
+    }} 
+    style={{color: tab == 4 ? "red" : "black"}}>Tab-4
+    </button>
+
+  </div>
+}
+
+
 
 export default App;
