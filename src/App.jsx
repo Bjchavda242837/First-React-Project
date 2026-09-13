@@ -73,15 +73,17 @@ function TabEffect() {
 
   const [tab, setTab] = useState(1)
   const [tabData, setTabData] = useState({})
-  
+  const [loading, setLoading] = useState(true)
 
   useEffect(function() {
+    setLoading(true)
     fetch("https://jsonplaceholder.typicode.com/todos/" + tab)
     .then(async res => {
       const json = await res.json();
       setTabData(json)
+      setLoading(false)
     })
-  })
+  }, [tab])
 
   return <div>
     <button onClick={()=> {
@@ -110,7 +112,7 @@ function TabEffect() {
 
     <br />
 
-    {tabData.title}
+    {loading ? "loading..." : tabData.title}
 
     
 
