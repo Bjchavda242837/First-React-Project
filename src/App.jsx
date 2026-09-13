@@ -76,7 +76,6 @@ function TabEffect() {
   const [loading, setLoading] = useState(true)
 
   useEffect(function() {
-    setLoading(true)
     fetch("https://jsonplaceholder.typicode.com/todos/" + tab)
     .then(async res => {
       const json = await res.json();
@@ -85,27 +84,32 @@ function TabEffect() {
     })
   }, [tab])
 
+  function handleTabSwinch(nextTab) {
+    setLoading(true)
+    setTab(nextTab)
+  }
+
   return <div>
     <button onClick={()=> {
-      setTab(1)
+      handleTabSwinch(1)
     }} 
     style={{color: tab == 1 ? "red" : "black"}}>Tab-1
     </button>
 
      <button onClick={()=> {
-      setTab(2)
+      handleTabSwinch(2)
     }} 
     style={{color: tab == 2 ? "red" : "black"}}>Tab-2
     </button>
 
      <button onClick={()=> {
-      setTab(3)
+      handleTabSwinch(3)
     }} 
     style={{color: tab == 3 ? "red" : "black"}}>Tab-3
     </button>
 
      <button onClick={()=> {
-      setTab(4)
+      handleTabSwinch(4)
     }} 
     style={{color: tab == 4 ? "red" : "black"}}>Tab-4
     </button>
